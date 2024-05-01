@@ -1,4 +1,5 @@
 Thanks to Trevor Spires for the POC template we're starting with!
+- https://github.com/trevorspires/genai-quickstart-pocs
 
 # Amazon-Bedrock-Claude3-Multi-Modal-Sample
 
