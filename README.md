@@ -5,7 +5,7 @@ Thanks to Trevor Spires for the POC template we're starting with!
 
 This is sample code demonstrating the use of Amazon Bedrock and Anthropic Claude 3 to satisfy multi-modal use cases. The application is constructed with a simple streamlit frontend where users can input zero shot requests to satisfy a broad range of use cases, including image to text multi-modal style use cases.
 
-![Alt text](images/demo.gif)
+![Alt text](images/screen-snip.JPG "Screen shot of User Interface")
 # **Goal of this Repo:**
 
 The goal of this repo is to provide users the ability to use Amazon Bedrock (specifically Claude3) and generative AI to leverage its multi-modal capabilities, allowing users to insert text questions, images, or both to get a comprehensive description/or answer based on the image and/or question that was passed in.
