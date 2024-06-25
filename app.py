@@ -2,31 +2,31 @@ import streamlit as st
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from pdf2image import convert_from_path
 from llm_multi_modal_invoke import image_to_text, text_to_text
 
 # load environment variables
 load_dotenv()
 # title of the streamlit app
-st.title(f""":rainbow[Multi-Modal with Amazon Bedrock and Anthropic Claude 3]""")
+st.title(f""":rainbow[CODENAME: LAGOS. A genAI Research Assistant]""")
 # directions on what can be done with this streamlit app
 st.header(f"""Directions to use this application:
-You have several options when it comes to leveraging Claude 3, you can either:
-1. Upload an image, and ask a specific question about it by inserting the question into the text box.
-2. Upload an image, and let the model describe the image without inserting text.
+1. Upload a PDF, and ask a specific question about it by inserting the question into the text box.
+2. Upload a PDF, and let the model describe the PDF without inserting text.
 3. Insert a question in the text box, and let the model answer the question directly without uploading an image.
 
 """, divider='rainbow')
 # default container that houses the image upload field
 with st.container():
     # header that is shown on the web UI
-    st.subheader('Image File Upload:')
+    st.subheader('PDF Upload (.pdf only):')
     # the image upload field, the specific ui element that allows you to upload an image
     # when an image is uploaded it saves the file to the directory, and creates a path to that image
-    File = st.file_uploader('Upload an Image', type=["png", "jpg", "jpeg"], key="new")
+    File = st.file_uploader('Upload a PDF', type="pdf", key="new")
     # this is the text box that allows the user to insert a question about the uploaded image or a question in general
-    text = st.text_input("Do you have a question about the image? Or about anything in general?")
+    text = st.text_input("Do you have a question about the document(s)? Or about anything in general?")
     # this is the button that triggers the invocation of the model, processing of the image and/or question
-    result = st.button("Process Image or Answer Question or Both!")
+    result = st.button("Process a PDF, or Ask Question, or Both!")
     # if the button is pressed, the model is invoked, and the results are output to the front end
     if result:
         # if an image is uploaded, a file will be present, triggering the image_to_text function
