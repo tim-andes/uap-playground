@@ -1,7 +1,5 @@
-Thanks to Trevor Spires for the POC template we're starting with!
-- https://github.com/trevorspires/genai-quickstart-pocs
-
 # Amazon-Bedrock-Claude3-Multi-Modal-Sample
+- thank you Trevor Spires (AWS) for the POC we're starting with!
 
 This is sample code demonstrating the use of Amazon Bedrock and Anthropic Claude 3 to satisfy multi-modal use cases. The application is constructed with a simple streamlit frontend where users can input zero shot requests to satisfy a broad range of use cases, including image to text multi-modal style use cases.
 
