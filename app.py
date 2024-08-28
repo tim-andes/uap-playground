@@ -2,7 +2,7 @@ import streamlit as st
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-from pdf2image import convert_from_path
+import pdf2image
 from llm_multi_modal_invoke import image_to_text, text_to_text
 
 # load environment variables
@@ -22,7 +22,7 @@ with st.container():
     st.subheader('PDF Upload (.pdf only):')
     # the image upload field, the specific ui element that allows you to upload an image
     # when an image is uploaded it saves the file to the directory, and creates a path to that image
-    File = st.file_uploader('Upload a PDF', type="pdf", key="new")
+    File = st.file_uploader('Upload a PDF', type="pdf")
     # this is the text box that allows the user to insert a question about the uploaded image or a question in general
     text = st.text_input("Do you have a question about the document(s)? Or about anything in general?")
     # this is the button that triggers the invocation of the model, processing of the image and/or question
@@ -31,8 +31,10 @@ with st.container():
     if result:
         # if an image is uploaded, a file will be present, triggering the image_to_text function
         if File is not None:
+            # convert PDF to image
+            pages = pdf2image.convert_from_bytes(File.read())
             # the image is displayed to the front end for the user to see
-            st.image(File)
+            st.image(pages)
             # determine the path to temporarily save the image file that was uploaded
             save_folder = os.getenv("save_folder")
             # create a posix path of save_folder and the file name
